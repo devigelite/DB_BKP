@@ -4,7 +4,7 @@ info:
   title: Swagger Elderly App
   description: API Documentation for Elderly App
 servers:
-  - url: "http://localhost:3002/"
+  - url: "http://localhost:3012/"
 
 consumes:
   - application/json
@@ -59,189 +59,201 @@ definitions:
           type: string
           minLength: 8
           maxLength: 16
-  nurse_login_request:
-      required:
-        - nurse_phone
-        - nurse_password
-      properties:
-        nurse_phone:
-          type: string
-          minLength: 10
-          maxLength: 10
-          pattern: "^[0-9]+$"
-        nurse_password:
-          type: string
-          minLength: 8
-          maxLength: 16
-
-  nurse_details_update_request:
+  user_details_update_request:
     properties:
-      nurse_id: 
+      user_id: 
         type: string
-        example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
-      nurse_email: 
-        type: string
-        example: abc@elite.com
-      nurse_password: 
-        type: string
-        example: abcd@1234
-      nurse_name: 
-        type: string
-        example: XXX
-      nurse_firstname: 
+        example: 53645460-2c17-4518-b883-4f940980c5cd
+      user_name: 
         type: string
         example: xxx
-      nurse_lastname: 
+      user_dob: 
         type: string
-        example: zzz
-      nurse_dob: 
+        example: "2002-01-01"
+      user_email: 
         type: string
-        example: 1997-01-01
-      nurse_age: 
-        type: string
-        example: 23
-      nurse_gender: 
+        example: abc@elite.com
+      user_gender: 
         type: string
         example: MALE
-      nurse_experience: 
-        type: string
-        example: 5
-      nurse_location: 
-        type: string
-        example: 2nd Street Iyappa Nagar
-      nurse_latitude: 
-        type: number
-        example: 13.121699
-      nurse_longitude: 
-        type: number
-        example: 80.201
-      nurse_whatsapp_phone: 
-        type: string
-        example: 919566202701
-      nurse_type:
-        type: string
-        example: NURSE
-  nurse_address_update_request:
+      whatsapp_same_as_contact_phone: 
+        type: boolean
+      address: 
+        type: object
+        properties: 
+          user_latitude: 
+            type: number
+            example: 80.201
+          user_longitude: 
+            type: number
+            example: 13.121699
+          user_location: 
+            type: string
+            example: abc location
+          user_address_line: 
+            type: string
+            example: 1st Street
+          user_city: 
+            type: string
+            example: Chennai
+          user_state: 
+            type: string
+            example: TamilNadu
+          user_pincode: 
+            type: string
+            example: 600099
+  user_address_update_request:
       required:
-        - nurse_id
-        - nurse_address_type
-        - nurse_door_no_block
-        - nurse_street
-        - nurse_road
-        - nurse_area
-        - nurse_city
-        - nurse_state
-        - nurse_pincode
+        - user_id
+        - user_address_type
+        - user_door_no_block
+        - user_street
+        - user_road
+        - user_area
+        - user_city
+        - user_state
+        - user_pincode
       properties:
-        nurse_id:
+        user_id:
           type: string
           minLength: 10
           example: "4294ebd4-3498-4a23-bd89-87c12e233bbsdds"
-        nurse_address_type:
+        user_address_type:
           type: string
           minLength: 3
           example: "Home"
-        nurse_door_no_block:
+        user_door_no_block:
           type: string
           minLength: 1
           maxLength: 8
           example: "201"  
-        nurse_street:
+        user_street:
           type: string
           minLength: 5
           example: "5th Street"
-        nurse_road:
+        user_road:
           type: string
           minLength: 5
           example: "2nd Main Road"
-        nurse_area:
+        user_area:
           type: string
           minLength: 4
           example: "6th Avenue"
-        nurse_city:
+        user_city:
           type: string
           minLength: 3
           example: "Chennai"
-        nurse_state:
+        user_state:
           type: string
           minLength: 4
           example: "TamilNadu"
-        nurse_pincode:
+        user_pincode:
           type: string
           minLength: 4
           example: "600001"
-  
-  nurse_filter_request:
-    required:
-      - user_id
-      - user_geolocation
-      - nurse_filter
+  patient_details_add_request:
+      required:
+        - user_id
+        - patient_email
+        - patient_name
+        - patient_dob
+        - patient_age
+        - patient_gender
+        - patient_phone
+      properties:
+        user_id:
+          type: string
+          minLength: 10
+          example: "4294ebd4-3498-4a23-bd89-87c12e233bbsdds"
+        patient_email:
+          type: string
+          minLength: 4
+          example: "xyz@elite.com"
+        patient_name:
+          type: string
+          minLength: 2
+          example: "xxx"
+        patient_dob:
+          type: string
+          minLength: 8
+          example: "01/01/2022"
+        patient_age:
+          type: string
+          minLength: 1
+          example: 20
+        patient_gender:
+          type: string
+          minLength: 1
+          example: "MALE"
+        patient_phone:
+          type: string
+          minLength: 10
+          maxLength: 10
+          pattern: "^[0-9]+$"
+  patient_details_update_request:
     properties:
       user_id: 
         type: string
-        example: "4294ebd4-3498-4a23-bd89-87c126483cf9"
-      user_geolocation: 
+        example: 53645460-2c17-4518-b883-4f940980c5cd
+      patient_name: 
         type: string
-        example: "0101000020E6100000F9765C9E180D5440590927B38B3F2A40"
-      nurse_filter: 
+        example: xxx
+      patient_dob: 
+        type: string
+        example: "2002-01-01"
+      patient_email: 
+        type: string
+        example: abc@elite.com
+      patient_gender: 
+        type: string
+        example: MALE
+      patient_phone: 
+        type: string
+        example: 91566202702
+      whatsapp_same_as_contact_phone: 
+        type: boolean
+      user_relationship_with_patient: 
+        type: string
+        example: PARENTS
+      address: 
         type: object
         properties: 
-          nurse_type: 
+          patient_latitude: 
+            type: number
+            example: 80.201
+          patient_longitude: 
+            type: number
+            example: 13.121699
+          patient_location: 
             type: string
-            example: "NURSE"
-          appointment_visit_type: 
+            example: abc location
+          patient_address_line: 
             type: string
-            example: "SINGLE_VISIT"
-          minimum_fees: 
-            type: integer
-            example: 500
-          maximum_fees: 
-            type: integer
-            example: 3000
-          nurse_experience: 
-            type: integer
-            example: 5
-          nurse_avg_rating: 
-            type: integer
-            example: 4
-          distance: 
-            type: integer
-            example: 2
-          order_by_name: 
+            example: 1st Street
+          patient_city: 
             type: string
-            example: "ASC"
-          order_by_price: 
+            example: Chennai
+          patient_state: 
             type: string
-            example: "ASC"
-  nurse_profile_request:
+            example: TamilNadu
+          patient_pincode: 
+            type: string
+            example: 600099
+  patient_details_list_request:
+      required:
+        - user_id
+      properties:
+        user_id:
+          type: string
+          minLength: 10
+          example: "53645460-2c17-4518-b883-4f940980c5cd"
+  user_info:
+    required:
+      - user_id
     properties:
-      nurse_id: 
-        type: string
-        example: "ee58f1f1-eb8b-4567-a15d-ddfc670252d6"
-      user_id: 
+      user_id:
         type: string
         example: "53645460-2c17-4518-b883-4f940980c5cd"
-      user_geolocation: 
-        type: string
-        example: "0101000020E6100000F9765C9E180D5440590927B38B3F2A40"
-
-  nurse_info:
-    required:
-      - nurse_id
-    properties:
-      nurse_id:
-        type: string
-        example: "4294ebd4-3498-4a23-bd89-87c12e233bbsdds"   
-  nurse_info_with_location:
-    required:
-      - nurse_id
-    properties:
-      nurse_id:
-        type: string
-        example: "4294ebd4-3498-4a23-bd89-87c12e233bbsdds"
-      nurse_geolocation: 
-        type: string
-        example: "0101000020E6100000F9765C9E180D5440590927B38B3F2A40"
   appointment_request:
     required:
       - appointment_request_id
@@ -253,9 +265,6 @@ definitions:
       nurse_id:
         type: string
         example: "ee58f1f1-eb8b-4567-a15d-ddfc670252d6"  
-      nurse_geolocation:
-        type: string
-        example: 0101000020E6100000F9765C9E180D5440590927B38B3F2A40
 
   appointment_info:
     required:
@@ -343,164 +352,141 @@ definitions:
         items: 
           type: number
           example: 0
-          
-  nurse_my_earning_request:
-    type: object
-    properties:
-      nurse_id: 
-        type: string
-        example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
-      start_date: 
-        type: string
-        example: "2021-11-18"
-      end_date: 
-        type: string
-        example: "2023-12-23"
   
-  nurse_review_summary_request:
-    type: object
-    properties:
-      nurse_id: 
-        type: string
-        example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
-      user_geolocation: 
-        type: string
-        example: "0101000020E6100000F9765C9E180D5440590927B38B3F2A40"
-
   session_request:
     type: object
     properties:
-      appointment_session_id:
+      appointment_session_id: 
         type: int
         example: 17
       user_geolocation: 
         type: string
-        example: "0101000020E6100000F9765C9E180D5440590927B38B3F2A40"
-  session_start_otp_request:
-    type: object
+        example: "0101000020E61000006CE9D1544F3E2A40BE9F1A2FDD0C5440"
+  session_list_request:
     properties:
-      appointment_session_id: 
-        type: number
-        example: 18
-  session_end_otp_request:
-    type: object
-    properties:
-      appointment_session_id: 
-        type: number
-        example: 18
-  session_start_request:
-    properties:
-      appointment_session_id: 
-        type: number
-        example: 18
-      otp_to_start: 
-        type: string
-        example: 3613
-      appointment_start_time: 
-        type: string
-        example: 13:00
-  session_end_request:
-    properties:
-      appointment_session_id: 
-        type: number
-        example: 18
-      otp_to_end: 
-        type: string
-        example: 3613
-      appointment_end_time: 
-        type: string
-        example: 14:00
-
-  nurse_review_add_request:
-    properties:
-      nurse_id: 
-        type: string
-        example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
       user_id: 
         type: string
         example: 4294ebd4-3498-4a23-bd89-87c126483cf9
-      patient_id: 
-        type: string
-        example: d29e837b-44d2-4c59-9100-c6471a1ba5e6
-      nurse_rating: 
-        type: number
-        example: 4
-      nurse_rating_comments: 
-        type: string
-        example: "Nurse is very helpful"
-      appointment_id: 
-        type: number
-        example: 100
-      appointment_session_id: 
-        type: number
-        example: 15
-
-  session_list_request:
-    properties:
-      nurse_id: 
-        type: string
-        example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
       appointment_request_id: 
         type: number
         example: 30
-  nurse_settings_info:
+
+  user_review_summary_request:
     properties:
+      user_id: 
+        type: string
+        example: 4294ebd4-3498-4a23-bd89-87c126483cf9
+      nurse_geolocation: 
+        type: string
+        example: 0101000020E61000006CE9D1544F3E2A40BE9F1A2FDD0C5440
+  
+  user_review_add_request:
+    properties:
+      user_id: 
+        type: string
+        example: 4294ebd4-3498-4a23-bd89-87c126483cf9
       nurse_id: 
         type: string
         example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
-      nurse_language: 
+      patient_id: 
+        type: string
+        example: d29e837b-44d2-4c59-9100-c6471a1ba5e6
+      user_rating: 
+        type: number
+        example: 4
+      user_rating_comments: 
+        type: string
+        example: Nurse is very helpful
+      appointment_id: 
+        type: number
+        example: 12
+      appointment_session_id: 
+        type: number
+        example: 18
+  
+  user_favourites_add_request:
+    properties:
+      nurse_id: 
+        type: string
+        example: 18803b4e-6683-11ed-b767-0242ac110002
+      user_id: 
+        type: string
+        example: 53645460-2c17-4518-b883-4f940980c5cd
+
+  user_settings_info:
+    properties:
+      user_id: 
+        type: string
+        example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
+      user_language: 
         type: string
         example: English
       notifications_on: 
         type: boolean
       whatsapp_alerts_on: 
         type: boolean
-  nurse_notification_info:
+  user_favourites_info:
     properties:
-      nurse_id: 
+      user_id: 
         type: string
-        example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
-      nurse_notifications_subject: 
+        example: 53645460-2c17-4518-b883-4f940980c5cd
+      user_geolocation: 
+        type: string
+        example: 0101000020E61000006CE9D1544F3E2A40BE9F1A2FDD0C5440
+      nurse_type: 
+        type: string
+        example: NURSE
+  user_notification_info:
+    properties:
+      user_id: 
+        type: string
+        example: 4294ebd4-3498-4a23-bd89-87c126483cf9
+      user_notifications_subject: 
         type: string
         example: Your appointment is completed
       appointment_session_id: 
         type: number
-        example: 2
- 
-  nurse_complaint_info:
+        example: 4
+  
+  user_complaint_info:
     properties:
+      user_id: 
+        type: string
+        example: 4294ebd4-3498-4a23-bd89-87c126483cf9
       nurse_id: 
         type: string
         example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
-      patient_id: 
-        type: string
-        example: d29e837b-44d2-4c59-9100-c6471a1ba5e6
       appointment_session_id: 
         type: number
         example: 1
-      nurse_complaint_reason: 
+      user_complaint_reason: 
         type: string
-        example: BEHAVIOUR
+        example: NURSE_NOT_YET_ARRIVED
       complaint_comments: 
         type: string
-        example: BEHAVIOUR
-
-  nurse_report_summary_request:
+        example: NURSE_NOT_YET_ARRIVED
+  patient_info:
     properties:
-        nurse_id: 
-          type: string
-          example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
-        duration: 
-          type: string
-          example: month
-  nurse_list_request:
-    type: object
+      patient_id:
+        type: string
+        example: "d29e837b-44d2-4c59-9100-c6471a1ba5e6"
+  payment_info:
     properties:
-      nurse_ids: 
-        type: array
-        items: 
-          type: string
-          example: "ee58f1f1-eb8b-4567-a15d-ddfc670252d6"
+      user_id: 
+        type: string
+        example: 4294ebd4-3498-4a23-bd89-87c126483cf9
+      appointment_id: 
+        type: number
+        example: 10
+      payment_method: 
+        type: string
+        example: GPAY
+ 
+  user_notifications_id:
+     properties:
+      notification_id: 
+        type: number
+        example: 10
 
   otp_verify_response:
     required:
@@ -609,13 +595,13 @@ definitions:
       token:
         type: string
         example: "yJhbGciOiJIUzI1NiIsyJhbGciOiJIUzI1NiIsyJhbGciOiJIUzI1NiIsyJhbGciOiJIUzI1NiIsyJhbGciOiJIUzI1NiIsyJhbGciOiJIUzI1NiIs" 
-  nurse_login_response:
+  
+  user_details_response:
+    type: object
     required:
       - response_code
-      - nurse_id
       - message
-      - auth
-      - token
+      - user_detail      
     properties:
       response_code:
         type: string
@@ -625,88 +611,75 @@ definitions:
       message:
         type: string
         example: Success
-      auth:
-        type: boolean
-        example: true
-      nurse_id:
-        type: string
-        example: "09e10c46-ae94-4948-a6e8-e48ca1deberetry"
-      token:
-        type: string
-        example: "yJhbGciOiJIUzI1NiIsyJhbGciOiJIUzI1NiIsyJhbGciOiJIUzI1NiIsyJhbGciOiJIUzI1NiIsyJhbGciOiJIUzI1NiIsyJhbGciOiJIUzI1NiIs"
-        
-  nurse_details_response:
+      user_detail:
+        $ref: '#/definitions/user_detaildata'
+  user_detaildata:
     type: object
-    required:
-      - response_code
-      - message
-      - nurse_detail      
-    properties:
-      response_code:
+    properties: 
+      user_id: 
         type: string
-        minLength: 3
-        pattern: "^[0-9]+$"
-        example: 200
-      message:
+        example: 53645460-2c17-4518-b883-4f940980c5cd
+      patient_id: 
         type: string
-        example: Success
-      nurse_detail:
-        $ref: '#/definitions/nurse_detaildata'
-  nurse_detaildata:
-    type: object
-    properties:
-      nurse_id: 
-        type: string
-        example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
-      nurse_email: 
-        type: string
-        example: abc@elite.com
-      nurse_name: 
-        type: string
-        example: XXX
-      nurse_firstname: 
+        example: 795c5e29-37d9-46a5-a3d7-3ebd05998bb0
+      user_name: 
         type: string
         example: xxx
-      nurse_lastname: 
+      user_dob: 
         type: string
-        example: zzz
-      nurse_dob: 
-        type: string
-        example: 1997-01-01T00:00:00.000Z
-      nurse_age: 
-        type: string
-        example: 23
-      nurse_gender: 
+        example: "2002-01-01"
+      user_age: 
+        type: number
+        example: 21
+      user_gender: 
         type: string
         example: MALE
-      nurse_phone: 
+      user_email: 
         type: string
-        example: 919236202701
-      nurse_location: 
+        example: abc@elite.com
+      user_phone: 
         type: string
-        example: 2nd Street Iyappa Nagar
-      nurse_latitude: 
-        type: number
-        example: 13.121699
-      nurse_longitude: 
-        type: number
-        example: 80.201
-      nurse_geolocation: 
+        example: 919566202701
+      user_whatsapp_phone: 
         type: string
-        example: 0101000020E6100000F9765C9E180D5440590927B38B3F2A40
-      nurse_experience: 
-        type: string
-        example: 5
-      nurse_whatsapp_phone: 
-        type: string
-        example: 919576202701
+        example: 919566202701
+      address: 
+        type: object
+        properties: 
+          user_address_id: 
+            type: string
+            example: 6e0a77bb-dcfc-4562-a1e7-3f7e8ade52cf
+          user_address_line: 
+            type: string
+            example: 1st Street
+          user_city: 
+            type: string
+            example: Chennai
+          user_state: 
+            type: string
+            example: TamilNadu
+          user_pincode: 
+            type: string
+            example: 100011
+          user_location: 
+            type: string
+            example: abc location
+          user_longitude: 
+            type: number
+            example: 13.121699
+          user_latitude: 
+            type: number
+            example: 80.201
+          user_geolocation: 
+            type: string
+            example: 0101000020E61000006CE9D1544F3E2A40BE9F1A2FDD0C5440
 
-  nurse_address_response:
+  user_address_response:
     type: object
     required:
       - response_code
       - message
-      - nurse_addresses      
+      - user_addresses      
     properties:
       response_code:
         type: string
@@ -716,129 +689,213 @@ definitions:
       message:
         type: string
         example: Success
-      nurse_addresses:
+      user_addresses:
         type: array
         items:
-          $ref: '#/definitions/nurse_addressdata'
-  nurse_addressdata:
+          $ref: '#/definitions/user_addressdata'
+  user_addressdata:
+      properties:
+        user_address_id:
+          type: string
+          minLength: 10
+          example: "4294ebd4-3498-4a23-bd89-87c12e233bbsdds"
+        user_address_type:
+          type: string
+          minLength: 4
+          example: "Home"
+        user_door_no_block:
+          type: string
+          minLength: 4
+          example: "54"
+        user_street:
+          type: string
+          minLength: 4
+          example: "1st Street"
+        user_area:
+          type: string
+          minLength: 4
+          example: "ABC Avenue"
+        user_road:
+          type: string
+          minLength: 4
+          example: "1st Main Road"
+        user_city:
+          type: string
+          minLength: 4
+          example: "Chennai"
+        user_state:
+          type: string
+          minLength: 4
+          example: "TamilNadu"
+        user_pincode:
+          type: string
+          minLength: 4
+          example: "100001"
+
+  patient_list_data:
     properties:
-      nurse_address_id:
+      response_code: 
+        type: number
+        example: 200
+      message: 
+        type: string
+        example: Success
+      patient_detail: 
+        type: object
+        properties: 
+          user_id: 
+            type: string
+            example: 53645460-2c17-4518-b883-4f940980c5cd
+          patients: 
+            type: array
+            items: 
+              type: object
+              properties: 
+                patient_id: 
+                  type: string
+                  example: 795c5e29-37d9-46a5-a3d7-3ebd05998bb0
+                patient_name: 
+                  type: string
+                  example: xxx
+                patient_dob: 
+                  type: string
+                  example: "2002-01-01"
+                patient_age: 
+                  type: number
+                  example: 21
+                patient_email: 
+                  type: string
+                  example: abc@elite.com
+                patient_gender: 
+                  type: string
+                  example: MALE
+                patient_phone: 
+                  type: string
+                  example: 919566202701
+                patient_whatsapp_phone: 
+                  type: string
+                  format: 919566202701
+                user_relationship_with_patient: 
+                  type: string
+                  example: SELF
+                address: 
+                  type: object
+                  properties: 
+                    address_id: 
+                      type: string
+                      example: 6e0a77bb-dcfc-4562-a1e7-3f7e8ade52cf
+                    address_line: 
+                      type: string
+                      example: 1st Street
+                    city: 
+                      type: string
+                      example: Chennai
+                    state: 
+                      type: string
+                      example: TamilNadu
+                    pincode: 
+                      type: string
+                      example: "600011"
+                    location: 
+                      type: string
+                      example: abc location
+                    longitude: 
+                      type: number
+                      example: 13.121699
+                    latitude: 
+                      type: number
+                      example: 80.201
+                    geo_location: 
+                      type: string
+                      example: 0101000020E61000006CE9D1544F3E2A40BE9F1A2FDD0C5440
+
+  patient_detaildata:
+    type: object
+    required:
+      - patient_id
+      - patient_name
+      - patient_age
+      - patient_dob
+      - patient_email
+      - patient_phone
+      - patient_gender
+      - user_id
+    properties:
+      patient_id:
         type: string
         minLength: 10
         example: "4294ebd4-3498-4a23-bd89-87c12e233bbsdds"
-      nurse_address_type:
+      patient_email:
         type: string
         minLength: 4
-        example: "Home"
-      nurse_door_no_block:
+        example: "xyz@elite.com"
+      patient_name:
         type: string
-        minLength: 4
-        example: "54"
-      nurse_street:
+        minLength: 2
+        example: "xxx"
+      patient_dob:
         type: string
-        minLength: 4
-        example: "1st Street"
-      nurse_area:
+        minLength: 8
+        example: "01/01/2022"
+      patient_age:
         type: string
-        minLength: 4
-        example: "ABC Avenue"
-      nurse_road:
+        minLength: 1
+        example: 20
+      patient_gender:
         type: string
-        minLength: 4
-        example: "1st Main Road"
-      nurse_city:
-        type: string
-        minLength: 4
-        example: "Chennai"
-      nurse_state:
-        type: string
-        minLength: 4
-        example: "TamilNadu"
-      nurse_pincode:
-        type: string
-        minLength: 4
-        example: "100001"
+        minLength: 1
+        example: "MALE"
+      patient_phone:
+          type: string
+          minLength: 10
+          maxLength: 10
+          pattern: "^[0-9]+$"
+        
   appointment_request_list_response:
-    type: object
+    type: object    
     properties:
-      response_code:
-        type: string
-        minLength: 3
-        pattern: "^[0-9]+$"
+      response_code: 
+        type: number
         example: 200
-      message:
+      message: 
         type: string
         example: Success
-      nurse_appointment_request:
-          $ref: '#/definitions/nurse_appointment_request_response'
-  nurse_appointment_request: 
-    type: object
-    properties:
-      nurse_id:
-        type: string
-        example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
-      nurse_name:
-        type: string
-        example: XXX
-      appointment_requests: 
-        type: array
-        items: 
-          type: object
-          properties: 
-            appointment_request_id: 
-              type: integer
-              format: int32
-              example: 4
-            appointment_request_status: 
-              type: string
-              example: "WAITINGFORNURSETOACCEPT"
-            appointment_session_count: 
-              type: integer
-              format: int32
-              example: 1
-            patient_name: 
-              type: string
-              example: YYY
-  nurse_appointment_request_response: 
-    type: object
-    properties:
-      nurse_id:
-        type: string
-        example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
-      nurse_name:
-        type: string
-        example: XXX
-      appointment_requests: 
-        type: array
-        items: 
-          type: object
-          properties: 
-            appointment_request_id: 
-              type: integer
-              format: int32
-              example: 4
-            appointment_request_status: 
-              type: string
-              example: "WAITINGFORNURSETOACCEPT"
-            appointment_session_count: 
-              type: integer
-              format: int32
-              example: 1
-            user_id:
-              type: string
-              example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
-            patient_id:
-              type: string
-              example: d29e837b-44d2-4c59-9100-c6471a1ba5e6
-            patient_name: 
-              type: string
-              example: YYY
-            patient_booking_status: 
-              type: boolean
-              example: false
-            distance: 
-                type: number
-                example: 2
+      user_appointment_request: 
+        type: object
+        properties: 
+          user_id: 
+            type: string
+            example: 4294ebd4-3498-4a23-bd89-87c126483cf9
+          appointment_requests: 
+            type: array
+            items: 
+              type: object
+              properties: 
+                appointment_request_id: 
+                  type: number
+                  example: 28
+                appointment_request_status: 
+                  type: string
+                  example: ACCEPTED
+                appointment_session_count: 
+                  type: number
+                  example: 1
+                patient_id: 
+                  type: string
+                  example: d29e837b-44d2-4c59-9100-c6471a1ba5e6
+                patient_name: 
+                  type: string
+                  example: YYY
+                nurse_id: 
+                  type: string
+                  example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
+                nurse_name: 
+                  type: string
+                  example: XXX
+                appointment_booking_status:
+                  type: boolean
+                  example: false
+  
   appointment_data:
     type: object
     required:
@@ -887,8 +944,251 @@ definitions:
         type: string
         minLength: 1
         example: "WAITING FOR NURSE TO ACCEPT"
+       
+  appointment_request_info_response:
+    properties:
+      response_code: 
+        type: number
+        example: 200
+      message: 
+        type: string
+        example: Success
+      appointment_request: 
+        type: object
+        properties: 
+          appointment_request_id: 
+            type: string
+            example: 28
+          appointment_id: 
+            type: integer
+            example: 12
+          booking_id: 
+            type: string
+            example: 7184-001696-3023
+          appointment_request_status: 
+            type: string
+            example: ACCEPTED
+          appointment_session_count: 
+            type: number
+            example: 1
+          appointment_date: 
+            type: string
+            format: date
+            example: 2022-12-21
+          appointment_visit_type: 
+            type: string
+            example: RECURRING_VISIT
+          appointment_start_date: 
+            type: string
+            format: date
+            example: 2022-12-21
+          appointment_end_date: 
+            type: string
+            format: date
+            example: 2022-12-30
+          patient_more_description: 
+            type: string
+            format: nullable
+          appointment_specific_request: 
+            type: string
+            format: nullable
+          total_payment_amount: 
+            type: string
+            format: nullable
+          fees_per_session: 
+            type: string
+            format: nullable
+          appointment_start_time: 
+            type: string
+            example: 13:00
+          appointment_end_time: 
+            type: string
+            example: 14:00
+          appointment_days: 
+            type: array
+            items: 
+              type: number
+              example: 0
+          payment_method: 
+            type: string
+            example: GPAY
+          appointment_booking_status:
+            type: boolean
+            example: false
+          nurse: 
+            type: object
+            properties: 
+              nurse_id: 
+                type: string
+                example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
+              nurse_name: 
+                type: string
+                example: XXX
+              nurse_avg_rating: 
+                type: number
+                example: 4.5
+              nurse_rating_count: 
+                type: number
+                example: 4
+              nurse_location: 
+                type: string
+                example: 2nd Street Iyappa Nagar
+              nurse_distance: 
+                type: number
+                example: 8146
+              nurse_experience: 
+                type: number
+                example: 5
+              nurse_gender: 
+                type: string
+                example: MALE
+              nurse_age: 
+                type: number
+                example: 26
+              nurse_longitude: 
+                type: string
+                example: 80.201
+              nurse_latitude:
+                type: string
+                example: 13.121699
+          patient: 
+            type: object
+            properties: 
+              patient_id: 
+                type: string
+                example: d29e837b-44d2-4c59-9100-c6471a1ba5e6
+              patient_name: 
+                type: string
+                example: YYY
+              patient_gender: 
+                type: string
+                example: MALE
+              patient_age: 
+                type: number
+                example: 46
+              patient_avg_rating: 
+                type: number
+                example: 0
+              patient_location: 
+                type: string
+                format: nullable
+              patient_phone: 
+                type: string
+                example: 918144528548
+              patient_email: 
+                type: string
+                example: devi@email.com
+              patient_rating_count: 
+                type: number
+                example: 0
+              patient_longitude: 
+                type: string
+                example: 80.201
+              patient_latitude:
+                type: string
+                example: 13.121699
+              patient_address_line:
+                type: string
+                example: 1st Street
+              patient_city:
+                type: string
+                example: Chennai
+              patient_state:
+                type: string
+                example: TamilNadu
+              patient_pincode:
+                type: string
+                example: 600011
+              user_relationship_with_patient: 
+                type: string
+                example: SELF
   
-  nurse_appointments_completed:
+  user_review_summary_response:
+    properties:
+      response_code: 
+        type: number
+        example: 200
+      message: 
+        type: string
+        example: Success
+      user_review: 
+        type: object
+        properties: 
+          user_id: 
+            type: string
+            example: 4294ebd4-3498-4a23-bd89-87c126483cf9
+          user_name: 
+            type: string
+            example: XYZ
+          user_age: 
+            type: number
+            example: 55
+          user_gender: 
+            type: string
+            example: MALE
+          user_location: 
+            type: string
+            format: nullable
+          user_phone: 
+            type: string
+            example: 918144528548
+          user_distance: 
+            type: number
+            example: 0
+          user_ratings_avg: 
+            type: object
+            properties: 
+              user_avg_rating: 
+                type: string
+                example: 4
+              user_rating_count: 
+                type: string
+                example: 1
+          user_ratings_summary: 
+            type: array
+            items: 
+              type: object
+              properties: 
+                user_rating: 
+                  type: number
+                  example: 4
+                user_rating_count: 
+                  type: string
+                  example: 1
+          user_reviews: 
+            type: array
+            items: 
+              type: object
+              properties: 
+                user_rating: 
+                  type: number
+                  example: 4
+                user_review_comments: 
+                  type: string
+                  example: Very Kind
+                user_name: 
+                  type: string
+                  example: XYZ
+                user_review_date: 
+                  type: string
+                  example: 2022-10-27T07:31:18.403Z
+
+  user_appointment_cancel_request:
+    properties:
+      user_id: 
+        type: string
+        example: 4294ebd4-3498-4a23-bd89-87c126483cf9
+      appointment_session_id: 
+        type: number
+        example: 17
+      user_cancel_reason: 
+        type: string
+        example: OUT_OF_STATION
+      appointment_cancel_comments: 
+        type: string
+        example: OUT_OF_STATION
+
+  user_appointments_completed:
     type: object
     properties:
       appointment_request_id:
@@ -925,13 +1225,10 @@ definitions:
         type: string
         minLength: 10
         example: "4294ebd4-3498-4a23-bd89-87c12e233bbsdds"
-  nurse_appointments_upcoming:
+  user_appointments_upcoming:
     type: object
     properties:
       appointment_request_id:
-        type: integer
-        example: 1
-      appointment_id:
         type: integer
         example: 1
       appointment_date:
@@ -939,7 +1236,7 @@ definitions:
         minLength: 10
         example: "01/01/2022"
       appointment_session_id:
-        type: integer
+        type: string
         example: 1
       booking_id:
         type: string
@@ -977,7 +1274,7 @@ definitions:
         type: string
         minLength: 10
         example: "4294ebd4-3498-4a23-bd89-87c12e233bbsdds"
-  nurse_appointments_upcoming_response:
+  user_appointments_upcoming_response:
     type: object
     properties:
       response_code:
@@ -992,17 +1289,12 @@ definitions:
         type: string
         minLength: 10
         example: "4294ebd4-3498-4a23-bd89-87c12e233bbsdds"
-      nurse_appointments: 
+      user_appointments: 
         type: array
         items:
-          $ref: '#/definitions/nurse_appointments_upcoming'
-  nurse_appointments_completed_response:
+          $ref: '#/definitions/user_appointments_upcoming'
+  user_appointments_completed_response:
     type: object
-    required:
-      - response_code
-      - message
-      - nurse_id
-      - nurse_appointments
     properties:
       response_code:
         type: string
@@ -1016,11 +1308,11 @@ definitions:
         type: string
         minLength: 10
         example: "4294ebd4-3498-4a23-bd89-87c12e233bbsdds"
-      nurse_appointments: 
+      user_appointments: 
         type: array
         items:
-          $ref: '#/definitions/nurse_appointments_completed'
-  nurse_appointments_ongoing:
+          $ref: '#/definitions/user_appointments_completed'
+  user_appointments_ongoing:
     type: object
     properties:
       appointment_request_id:
@@ -1122,13 +1414,8 @@ definitions:
         type: string
         minLength: 10
         example: "4294ebd4-3498-4a23-bd89-87c12e233bbsdds"
-  nurse_appointments_ongoing_response:
+  user_appointments_ongoing_response:
     type: object
-    required:
-      - response_code
-      - message
-      - nurse_id
-      - nurse_appointments
     properties:
       response_code:
         type: string
@@ -1142,177 +1429,11 @@ definitions:
         type: string
         minLength: 10
         example: "4294ebd4-3498-4a23-bd89-87c12e233bbsdds"
-      nurse_appointments: 
+      user_appointments: 
         type: array
         items:
-          $ref: '#/definitions/nurse_appointments_ongoing'
-  nurse_available_slots:
-    type: object
-    properties:
-      response_code: 
-        type: string
-        example: 200
-      message: 
-        type: string
-        example: Success
-      nurse_id: 
-        type: string
-        example: "ee58f1f1-eb8b-4567-a15d-ddfc67025dfff"
-      nurse_booked_slots: 
-        type: array
-        items: 
-          type: object
-          properties: 
-            appointment_session_id: 
-              type: integer
-              example: 4
-            appointment_id: 
-              type: integer
-              example: 2
-            appointment_date: 
-              type: string
-              format: date
-              example: "2022-10-18"
-            appointment_slot_time: 
-              type: string
-              example: "14:00"
-            appointment_booked_start_time: 
-              type: string
-              example: "14:00"
-            appointment_booked_end_time: 
-              type: string
-              example: "15:00"
-      nurse_default_slots: 
-        type: array
-        items: 
-          type: object
-          properties: 
-            slot_id: 
-              type: integer
-              example: 1
-            slot_frequency: 
-              type: array
-              items: 
-                type: string
-                example: "MON"
-            slots: 
-              type: array
-              items: 
-                type: string
-                example: "00:00"
-      nurse_specific_slots: 
-        type: array
-        items: 
-          type: object
-          properties: 
-            slot_id: 
-              type: integer
-              example: 1
-            slot_date: 
-              type: string
-              format: date
-              example: "2022-10-13"
-            slots: 
-              type: array
-              items: 
-                type: string
-                example: "00:00"
-  nurse_open_slots:
-    type: object
-    properties:
-      response_code: 
-        type: string
-        example: "200"
-      message: 
-        type: string
-        example: "Success"
-      nurse_open_slots: 
-        type: object
-        properties: 
-          nurse_id: 
-            type: string
-            example: "ee58f1f1-eb8b-4567-a15d-ddfc6702fgh"
-          nurse_open_slots: 
-            type: object
-            properties: 
-              default_slot: 
-                type: object
-                properties: 
-                  slot_frequency: 
-                    type: array
-                    items: 
-                      type: string
-                      example: "MON"
-                  slots: 
-                    type: array
-                    items: 
-                      type: string
-                      example: "00:00"
-              specific_slots: 
-                type: array
-                items: 
-                  type: object
-                  properties: 
-                    slot_date: 
-                      type: string
-                      example: "2022-10-20"
-                    slots: 
-                      type: array
-                      items: 
-                        type: string
-                        example: "00:00"
-  nurse_fees_response:
-    type: object
-    properties:
-      response_code: 
-        type: integer
-        example: 200
-      message: 
-        type: string
-        example: "Success"
-      nurse_fees: 
-        type: object
-        properties: 
-          nurse_id: 
-            type: string
-            example: "ee58f1f1-eb8b-4567-a15d-defreetrt123"
-          minimum_distance: 
-            type: integer
-            example: 10
-          distance_unit: 
-            type: string
-            example: "KM"
-          minimum_session_fee: 
-            type: integer
-            example: 500
-          session_fee_currency: 
-            type: string
-            example: "INR"
-          charges_for_extra_distance: 
-            type: integer
-            example: 100
-  nurse_fees_info: 
-    type: object
-    properties: 
-      nurse_id: 
-        type: string
-        example: "ee58f1f1-eb8b-4567-a15d-defreetrt123"
-      minimum_distance: 
-        type: integer
-        example: 10
-      distance_unit: 
-        type: string
-        example: "KM"
-      minimum_session_fee: 
-        type: integer
-        example: 500
-      session_fee_currency: 
-        type: string
-        example: "INR"
-      charges_for_extra_distance: 
-        type: integer
-        example: 100
-  nurse_search_response:
+          $ref: '#/definitions/user_appointments_ongoing'
+  user_settings_response:
     properties:
       response_code: 
         type: number
@@ -1320,386 +1441,224 @@ definitions:
       message: 
         type: string
         example: Success
-      nurse_list: 
+      user_settings: 
         type: object
         properties: 
-          nurse_ids: 
-            type: array
-            items: 
+          user_id: 
+            type: string
+            example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
+          user_language: 
+            type: string
+            example: English
+          notifications_on: 
+            type: boolean
+          whatsapp_alerts_on:
+            type: boolean
+
+  user_favourites_response:
+    properties:
+      response_code: 
+        type: number
+        example: 200
+      message: 
+        type: string
+        example: Success
+      user_favourites: 
+        type: array
+        items: 
+          type: object
+          properties: 
+            user_favourites_id: 
+              type: integer
+              example: 8
+            nurse_id: 
               type: string
-              example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
-          nurses: 
+              example: 18803b4e-6683-11ed-b767-0242ac110002
+            nurse_name: 
+              type: string
+              example: YYY
+            nurse_location: 
+              type: string
+              example: 12nd StreetAnna Nagar
+            nurse_distance: 
+              type: number
+              example: 8144
+            nurse_experience: 
+              type: number
+              example: 5
+            nurse_age: 
+              type: number
+              example: 24
+            nurse_gender: 
+              type: string
+              example: MALE
+            nurse_type: 
+              type: string
+              example: NURSE
+            nurse_avg_rating: 
+              type: string
+              example: 3
+            nurse_rating_count: 
+              type: string
+              example: 3
+            fees_per_session: 
+              type: integer
+              example: 500
+
+  user_notifications_response:
+    properties:
+      response_code: 
+        type: number
+        example: 200
+      message: 
+        type: string
+        example: Success
+      user_notifications: 
+        type: array
+        items: 
+          type: object
+          properties: 
+            notification_date: 
+              type: string
+              example: 2023-01-21
+            notifications: 
+              type: array
+              items: 
+                type: object
+                properties: 
+                  user_notifications_id: 
+                    type: number
+                    example: 4
+                  user_id: 
+                    type: string
+                    example: 4294ebd4-3498-4a23-bd89-87c126483cf9
+                  nurse_id: 
+                    type: string
+                    example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
+                  nurse_name: 
+                    type: string
+                    example: XXX
+                  user_notifications_subject: 
+                    type: string
+                    example: You have an upcoming appointment
+                  notification_date: 
+                    type: string
+                    example: 2023-01-21
+                  appointment_date: 
+                    type: string
+                    example: 2022-11-06
+                  appointment_slot_time: 
+                    type: string
+                    example: 14:00
+                  is_read: 
+                    type: boolean
+                    example: false
+  user_appointment_session_list_response:
+    properties:
+      response_code: 
+        type: number
+        example: 200
+      message:
+        type: string
+        example: Success
+      appointment_sessions:
+        type: object
+        properties: 
+          nurse_id: 
+            type: string
+            example: 18803b4e-6683-11ed-b767-0242ac110002
+          nurse_name: 
+            type: string
+            example: YYY
+          patient_id: 
+            type: string
+            example: d29e837b-44d2-4c59-9100-c6471a1ba5e6
+          patient_name: 
+            type: string
+            example: YYY
+          appointment_request_id: 
+            type: number
+            example: 58
+          booking_id: 
+            type: string
+            example: 7188-182877-6076
+          appointment_session_count: 
+            type: number
+            example: 1
+          upcoming_sessions: 
             type: array
             items: 
               type: object
               properties: 
-                nurse_id: 
-                  type: string
-                  example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
-                nurse_name: 
-                  type: string
-                  example: XXX
-                nurse_avg_rating: 
+                session_id: 
                   type: number
-                  example: 4.5
-                nurse_rating_count: 
+                  example: 22
+                session_order: 
                   type: number
-                  example: 4
-                nurse_location: 
+                  example: 3
+                session_date: 
                   type: string
-                  example: 2nd Street Iyappa Nagar
-                minimum_session_fee: 
+                  format: date
+                  example: 2023-12-23
+                session_day: 
                   type: number
-                  example: 500
-                nurse_experience: 
+                  example: 6
+                session_start_time: 
+                  type: string
+                  example: 20:00
+                session_end_time: 
+                  type: string
+                  example: 23:00
+          cancelled_sessions: 
+            type: array
+            items: 
+              type: object
+              properties: 
+                session_id: 
+                  type: number
+                  example: 21
+                session_order: 
+                  type: number
+                  example: 2
+                session_date: 
+                  type: string
+                  format: date
+                  example: 2023-12-22
+                session_day: 
                   type: number
                   example: 5
-                nurse_gender: 
+                session_start_time: 
                   type: string
-                  example: MALE
-                nurse_age: 
-                  type: number
-                  example: 23
-                distance: 
-                  type: number
-                  example: 2
-
-  nurse_profile_response:
-    type: object
-    properties:
-      response_code: 
-        type: integer
-        example: 200
-      message: 
-        type: string
-        example: Success
-      nurse_profile: 
-        type: object
-        properties: 
-          nurse_id: 
-            type: string
-            example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
-          nurse_name: 
-            type: string
-            example: XXX
-          nurse_age: 
-            type: integer
-            example: 25
-          nurse_gender: 
-            type: string
-            example: MALE
-          nurse_location: 
-            type: string
-            example: 1,2nd StreetAnna Nagar
-          nurse_phone: 
-            type: string
-            example: 919566202701
-          nurse_distance: 
-            type: integer
-            example: 2
-          nurse_type: 
-            type: string
-            example: NURSE
-          nurse_avg_rating: 
-            type: number
-            example: 4.5
-          nurse_rating_count: 
-            type: integer
-            example: 1
-          nurse_experience: 
-            type: integer
-            example: 5
-          nurse_verified: 
-            type: boolean
-          nurse_is_licensed: 
-            type: boolean
-          nurse_is_criminal_record_checked:
-            type: boolean
-          nurse_description: 
-            type: string
-            example: Mrs.XYZ is a well experienced nurse in Cardio
-          nurse_languages_known:
-            type: array
-            items: 
-              type: string
-            example: ["TAMIL", "ENGLISH", "HINDI"]
-          nurse_service_type: 
-            type: array
-            items: 
-              type: string
-            example: ["HOUSE_HOLD_TASKS"]
-          nurse_education_name: 
-            type: string
-            example: Medical Graduate
-          nurse_skill_name: 
-            type: string
-            example: Certified Home Health Aide
-          nurse_recurring_slots: 
-            type: object
-            properties: 
-              nurse_slot_frequency: 
-                type: array
-                items: 
+                  example: 20:00
+                session_end_time: 
                   type: string
-                  example: "SUN"
-              nurse_slot_start_time: 
-                type: string
-                example: 10:00
-              nurse_slot_end_time: 
-                type: string
-                example: 18:00
-          nurse_fees:
-            type: integer
-            example: 1000
-          favourites: 
-            type: object
-            properties: 
-              user_favourites_id: 
-                type: number
-                example: 9
-
-  nurse_booking_result:
-    type: object
-    properties:
-      response_code: 
-        type: integer
-        example: 200
-      status: 
-        type: string
-        example: Success
-      message: 
-        type: string
-        example: "Appointment Request Sent"
-      
-  nurse_myearning_response:
-    type: object
-    properties:
-      response_code:
-        type: integer
-        example: 200
-      message: 
-        type: string
-        example: Success
-      nurse_earnings: 
-        type: object
-        properties: 
-          total_bookings: 
-            type: number
-            example: 7
-          cancelled_sessions: 
-            type: number
-            example: 0
-          reported_sessions: 
-            type: number
-            example: 1
-          received_payment: 
-            type: number
-            example: 5000
-          pending_payment: 
-            type: number
-            example: 0
-  nurse_review_summary_response:
-    type: object
-    properties:
-      response_code: 
-        type: integer
-        example: 200
-      message: 
-        type: string
-        example: Success
-      nurse_review: 
-        type: object
-        properties: 
-          nurse_id: 
-            type: string
-            example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
-          nurse_name: 
-            type: string
-            example: XXX
-          nurse_age: 
-            type: integer
-            example: 25
-          nurse_gender: 
-            type: string
-            example: MALE
-          nurse_location: 
-            type: string
-            example: 12nd StreetAnna Nagar
-          nurse_phone: 
-            type: string
-            example: 919566202701
-          nurse_distance: 
-            type: integer
-            example: 2
-          nurse_avg_rating: 
-            type: number
-            example: 4.5
-          nurse_rating_count: 
-            type: integer
-            example: 4
-          nurse_experience: 
-            type: integer
-            example: 5
-          nurse_ratings_avg: 
-            type: object
-            properties:
-              nurse_avg_rating:
-                type: string
-                example: 3
-              nurse_rating_count:
-                type: string
-                example: 4
-          nurse_ratings_summary: 
+                  example: 23:00
+          completed_sessions: 
             type: array
             items: 
               type: object
               properties: 
-                nurse_rating: 
-                  type: integer
-                  example: 2
-                nurse_rating_count: 
-                  type: string
+                session_id: 
+                  type: number
+                  example: 20
+                session_order: 
+                  type: number
                   example: 1
-          nurse_reviews: 
-            type: array
-            items: 
-              type: object
-              properties: 
-                nurse_rating: 
-                  type: integer
+                session_date: 
+                  type: string
+                  format: date
+                  example: 2023-12-21
+                session_day: 
+                  type: number
                   example: 4
-                nurse_review_comments: 
+                session_start_time: 
                   type: string
-                  example: Good Work
-                user_name: 
+                  example: 20:00
+                session_end_time: 
                   type: string
-                  example: XYZ
-                nurse_review_date: 
-                  type: string
-                  example: "2022-10-27"
-  nurse_appointment_info_response:
-    properties:
-      response_code: 
-        type: integer
-        example: 200
-      message: 
-        type: string
-        example: Success
-      appointment_request: 
-        type: object
-        properties: 
-          appointment_request_id: 
-            type: string
-            example: 7
-          appointment_request_status: 
-            type: string
-            example: ACCEPTED
-          appointment_session_count: 
-            type: integer
-            example: 1
-          appointment_date: 
-            type: string
-            example: 2022-10-18
-          appointment_visit_type: 
-            type: string
-            example: LIVE_IN_CARE
-          appointment_start_date: 
-            type: string
-            example: 2022-11-18
-          appointment_end_date: 
-            type: string
-            example: 2022-11-18
-          appointment_patient_symptoms: 
-            type: string
-            format: "fever"
-          appointment_specific_request: 
-            type: string
-            format: "N/A"
-          total_payment_amount: 
-            type: string
-            format: 1000
-          fees_per_session: 
-            type: string
-            format: 1000
-          appointment_actual_start_time:
-            type: string
-            example: "10:00"
-          appointment_actual_end_time:
-            type: string
-            example: "11:00"
-          appointment_days: 
-            type: array
-            items: 
-              type: integer
-              example: 0
-          user_id: 
-              type: string
-              example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
-          nurse: 
-            type: object
-            properties: 
-              nurse_id: 
-                type: string
-                example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
-              nurse_name: 
-                type: string
-                example: XXX
-              nurse_avg_rating: 
-                type: number
-                example: 4.5
-              nurse_rating_count: 
-                type: integer
-                example: 4
-              nurse_location: 
-                type: string
-                example: 12nd StreetAnna Nagar
-              nurse_distance: 
-                type: integer
-                example: 2
-              nurse_experience: 
-                type: integer
-                example: 5
-              nurse_gender: 
-                type: string
-                example: MALE
-              nurse_age: 
-                type: integer
-                example: 25
-          patient: 
-            type: object
-            properties: 
-              patient_id: 
-                type: string
-                example: d29e837b-44d2-4c59-9100-c6471a1ba5e6
-              patient_name: 
-                type: string
-                example: YYY
-              patient_gender: 
-                type: string
-                example: MALE
-              patient_age: 
-                type: integer
-                example: 55
-              patient_avg_rating: 
-                type: string
-                format: 4.5
-              patient_location: 
-                type: string
-                format: "2, 2nd Street"
-              patient_phone: 
-                type: string
-                example: 918144528548
-              patient_email: 
-                type: string
-                example: devi@email.com
-              patient_latitude: 
-                type: number
-                example: 13.121699
-              patient_longitude: 
-                type: number
-                example: 80.201
+                  example: 23:00
 
-  nurse_appointment_session_info_response:
+  user_appointment_session_info_response:
     properties:
       response_code: 
         type: number
@@ -1715,38 +1674,38 @@ definitions:
             properties: 
               session_id: 
                 type: number
-                example: 17
+                example: 12
               session_date: 
                 type: string
                 format: date
-                example: 2022-12-25
+                example: 2022-12-26
               session_day: 
                 type: number
-                example: 0
+                example: 1
               session_start_time: 
                 type: string
-                example: 20:00
+                example: 13:00
               session_end_time: 
                 type: string
-                example: 21:00
+                example: 14:00
               session_status: 
                 type: string
-                example: UPCOMING
+                example: COMPLETED
               session_duraion: 
                 type: number
                 example: 1
               booking_id: 
                 type: string
-                example: 7184-064646-3655
+                example: 7184-001696-3023
               session_count: 
                 type: number
-                example: 1
+                example: 3
               session_actual_start_time: 
                 type: string
                 format: nullable
               session_actual_end_time: 
                 type: string
-                format: nullable
+                example: 13:00
               session_cancelled_by: 
                 type: string
                 format: nullable
@@ -1764,7 +1723,7 @@ definitions:
                     example: XXX
                   nurse_age: 
                     type: number
-                    example: 25
+                    example: 23
                   nurse_gender: 
                     type: string
                     example: MALE
@@ -1773,144 +1732,18 @@ definitions:
                     example: 5
                   nurse_location: 
                     type: string
-                    example: 12nd StreetAnna Nagar
+                    example: 2nd Street Iyappa Nagar
                   nurse_distance: 
                     type: number
-                    example: 2
+                    example: 8146
                   nurse_avg_rating: 
-                    type: number
-                    example: 4.5
+                    type: string
+                    example: 3
                   nurse_rating_count: 
-                    type: number
-                    example: 4
-  nurse_appointment_session_list_response:
-    properties:
-      response_code: 
-        type: number
-        example: 200
-      message: 
-        type: string
-        example: Success
-      appointment_sessions: 
-        type: object
-        properties: 
-          nurse_id: 
-            type: string
-            example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
-          nurse_name: 
-            type: string
-            example: XXX
-          patient_id: 
-            type: string
-            example: d29e837b-44d2-4c59-9100-c6471a1ba5e6
-          patient_name: 
-            type: string
-            example: YYY
-          appointment_request_id: 
-            type: number
-            example: 30
-          booking_id: 
-            type: string
-            example: 7184-064646-3655
-          appointment_session_count: 
-            type: number
-            example: 3
-          upcoming_sessions: 
-            type: array
-            items: 
-              type: object
-              properties: 
-                session_id: 
-                  type: number
-                  example: 18
-                session_order: 
-                  type: number
-                  example: 2
-                session_date: 
-                  type: string
-                  format: date
-                  example: 2023-12-22
-                session_day: 
-                  type: number
-                  example: 5
-                session_start_time: 
-                  type: string
-                  example: 20:00
-                session_end_time: 
-                  type: string
-                  example: 21:00
-          cancelled_sessions: 
-            type: array
-            items: 
-              type: object
-              properties: 
-                session_id: 
-                  type: number
-                  example: 18
-                session_order: 
-                  type: number
-                  example: 2
-                session_date: 
-                  type: string
-                  format: date
-                  example: 2023-12-22
-                session_day: 
-                  type: number
-                  example: 5
-                session_start_time: 
-                  type: string
-                  example: 20:00
-                session_end_time: 
-                  type: string
-                  example: 21:00
-          completed_sessions: 
-            type: array
-            items: 
-              type: object
-              properties: 
-                session_id: 
-                  type: number
-                  example: 18
-                session_order: 
-                  type: number
-                  example: 2
-                session_date: 
-                  type: string
-                  format: date
-                  example: 2023-12-22
-                session_day: 
-                  type: number
-                  example: 5
-                session_start_time: 
-                  type: string
-                  example: 20:00
-                session_end_time: 
-                  type: string
-                  example: 21:00
+                    type: string
+                    example: 7
 
-  nurse_session_start_otp_response:
-    properties:
-      appointment_session_id: 
-        type: number
-        example: 18
-      otp_to_start: 
-        type: string
-        example: 3613
-      appointment_start_time: 
-        type: string
-        example: 13:00
-  nurse_session_end_otp_response:
-    properties:
-      appointment_session_id: 
-        type: number
-        example: 18
-      otp_to_end: 
-        type: string
-        example: 3613
-      appointment_end_time: 
-        type: string
-        example: 13:00
-  nurse_settings_response:
+  user_complaints_response:
     properties:
       response_code: 
         type: number
@@ -1918,166 +1751,34 @@ definitions:
       message: 
         type: string
         example: Success
-      nurse_settings: 
-        type: object
-        properties: 
-          nurse_id: 
-            type: string
-            example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
-          nurse_language: 
-            type: string
-            example: English
-          notifications_on: 
-            type: boolean
-          whatsapp_alerts_on: 
-            type: boolean
-  nurse_notifications_response:
-    properties:
-      response_code: 
-        type: number
-        example: 200
-      message: 
-        type: string
-        example: Success
-      nurse_notifications: 
+      user_complaints: 
         type: array
         items: 
           type: object
           properties: 
-            notification_date: 
-              type: string
-              format: date
-              example: 2023-01-20
-            notifications: 
-              type: array
-              items: 
-                type: object
-                properties: 
-                  nurse_notifications_id: 
-                    type: number
-                    example: 5
-                  nurse_id: 
-                    type: string
-                    example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
-                  patient_id: 
-                    type: string
-                    example: d29e837b-44d2-4c59-9100-c6471a1ba5e6
-                  patient_name: 
-                    type: string
-                    example: YYY
-                  nurse_notifications_subject: 
-                    type: string
-                    example: Your appointment is completed
-                  notification_date: 
-                    type: string
-                    format: date
-                    example: 2023-01-20
-                  appointment_date: 
-                    type: string
-                    format: date
-                    example: 2022-11-04
-                  appointment_slot_time: 
-                    type: string
-                    example: 14:00
-                  is_read: 
-                    type: boolean
-                    example: false
-  nurse_complaints_response:
-    properties:
-      response_code: 
-        type: number
-        example: 200
-      message: 
-        type: string
-        example: Success
-      nurse_complaints: 
-        type: array
-        items: 
-          type: object
-          properties: 
-            nurse_appointment_complaint_id: 
+            user_appointment_complaint_id: 
               type: number
               example: 1
-            patient_id: 
+            nurse_id: 
               type: string
-              example: d29e837b-44d2-4c59-9100-c6471a1ba5e6
-            patient_name: 
+              example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
+            nurse_name: 
               type: string
-              example: YYY
+              example: XXX
             appointment_session_id: 
               type: number
               example: 1
-            nurse_complaint_reason: 
+            user_complaint_reason: 
               type: string
-              example: BEHAVIOUR
+              example: NURSE_NOT_YET_ARRIVED
             complaint_comments: 
               type: string
-              example: BEHAVIOUR
+              example: NURSE_NOT_YET_ARRIVED
             complaint_date: 
               type: string
               format: date
               example: 2023-02-03
-  nurse_summary_report_response:
-    properties:
-      response_code: 
-        type: number
-        example: 200
-      message: 
-        type: string
-        example: Success
-      report_summary: 
-        type: object
-        properties: 
-          visit_summary: 
-            type: object
-            properties:
-              total_visit_count: 
-                type: number
-                example: 3
-              month_wise_summary: 
-                type: array
-                items: 
-                  type: object
-                  properties: 
-                    month: 
-                      type: number
-                      example: 1
-                    visit_count: 
-                      type: number
-                      example: 2
-          appointment_summary: 
-            type: object
-            properties: 
-              total_appointment_count: 
-                type: number
-                example: 9
-              month_wise_summary: 
-                type: array
-                items: 
-                  type: object
-                  properties: 
-                    month: 
-                      type: number
-                      example: 10
-                    appointment_count: 
-                      type: number
-                      example: 4
-          summary: 
-            type: object
-            properties: 
-              cancelled_session_count: 
-                type: number
-                example: 2
-              reported_session_count: 
-                type: number
-                example: 1
-              amount_received: 
-                type: number
-                example: 10000
-              balance_amount: 
-                type: number
-                example: 1000
-  nurse_profile_image_response:
+  profile_image_response:
     properties:
       response_code: 
         type: number
@@ -2087,14 +1788,11 @@ definitions:
         example: Success
       profileImage: 
         type: object
-        properties:
-          nurse_id: 
-            type: string
-            example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
+        properties: 
           imageURL: 
             type: string
             example: https://doc.s3.ap-south-1.amazonaws.com/abcd/image/ee58f1f1-eb8b-4567-a15d-ddfc670252d6/profile.jpg
-  nurse_appointment_current_session_list_response:
+  user_appointment_current_session_list_response:
     properties:
       response_code: 
         type: number
@@ -2150,14 +1848,10 @@ definitions:
                 session_end_time: 
                   type: string
                   example: 14:00
-                is_session_started:
-                  type: boolean
-                  example: true
                 session_actual_start_time: 
                   type: string
                   example: 13:00
-
-  nurse_upcoming_session_count_response:
+  user_upcoming_session_count_response:
     properties:
       response_code: 
         type: number
@@ -2168,7 +1862,7 @@ definitions:
       appointment_session_count:
         type: number
         example: 3
-  nurse_notification_count_response:
+  user_notification_count_response:
     properties:
       response_code: 
         type: number
@@ -2179,13 +1873,83 @@ definitions:
       notification_count:
         type: number
         example: 3
-  nurse_notifications_id:
-     properties:
-      notification_id: 
+  patient_list_request:
+    type: object
+    properties:
+      patient_ids: 
+        type: array
+        items: 
+          type: string
+          example: "ee58f1f1-eb8b-4567-a15d-ddfc670252d6"
+  patient_profile_image_response:
+    properties:
+      response_code: 
         type: number
-        example: 10
-paths:    
-  /nurse/otp/send:
+        example: 200
+      message: 
+        type: string
+        example: Success
+      profileImage: 
+        type: object
+        properties:
+          patient_id: 
+            type: string
+            example: ee58f1f1-eb8b-4567-a15d-ddfc670252d6
+          imageURL: 
+            type: string
+            example: https://doc.s3.ap-south-1.amazonaws.com/abcd/image/ee58f1f1-eb8b-4567-a15d-ddfc670252d6/profile.jpg
+  user_transaction_request:
+    properties:
+      user_id: 
+        type: string
+        example: 4294ebd4-3498-4a23-bd89-87c126483cf9
+      duration: 
+        type: string
+        example: This_Month
+  user_transaction_response:
+    properties:
+      response_code: 
+        type: number
+        example: 200
+      message: 
+        type: string
+        example: Success
+      user_transaction_history: 
+        type: array
+        items: 
+          type: object
+          properties: 
+            appointment_date: 
+              type: string
+              format: date
+              example: 2023-03-02
+            appointment_details: 
+              type: array
+              items: 
+                type: object
+                properties: 
+                  appointment_date: 
+                    type: string
+                    format: date
+                    example: 2023-03-02
+                  booking_id: 
+                    type: string
+                    example: 7184-001696-3023
+                  appointment_slot_time: 
+                    type: string
+                    example: 13:00
+                  nurse_name: 
+                    type: string
+                    example: XXX
+                  Fees: 
+                    type: number
+                    example: 500
+                  payment_method: 
+                    type: string
+                    example: GPAY
+
+paths:
+  /user/otp/send:
     post:
       description: Generate and send otp to Mobile
       security: []
@@ -2202,9 +1966,96 @@ paths:
           schema:
             $ref: "#/definitions/otp_response"
       tags:
-        - Nurses
+        - Users
+  /user/details/update:
+    post:
+      description: Update User Details
+      parameters:
+        - name: user_details_update_request
+          in: body
+          description: Send User Details to update
+          required: true
+          schema:
+            $ref: "#/definitions/user_details_update_request"
+      responses:
+        200:
+          description: Returns sending Update details is success or not
+          schema:
+            $ref: "#/definitions/default_response"
+      tags:
+        - Users
+  
+  /user/patient/update:
+    post:
+      description: Update Patient Details
+      parameters:
+        - name: patient_details_update_request
+          in: body
+          description: Send Patient Details to Update
+          required: true
+          schema:
+            $ref: "#/definitions/patient_details_update_request"
+      responses:
+        200:
+          description: Returns sending Update details is success or not
+          schema:
+            $ref: "#/definitions/default_response"
+      tags:
+        - Patients
+  /user/patients/list:
+    post:
+      description: List Patient Details
+      parameters:
+        - name: patient_details_list_request
+          in: body
+          description: Send User Id
+          required: true
+          schema:
+            $ref: "#/definitions/patient_details_list_request"
+      responses:
+        200:
+          description: Returns Patient Details associated with the User Id
+          schema:
+            $ref: "#/definitions/patient_list_data"
+      tags:
+        - Patients
+  /user/details:
+    post:
+      description: List User Details
+      parameters:
+        - name: user_id
+          in: body
+          description: Send User Id
+          required: true
+          schema:
+            $ref: "#/definitions/user_info"
+      responses:
+        200:
+          description: Returns user details
+          schema:
+            $ref: "#/definitions/user_details_response"
+      tags:
+        - Users
+  /user/login:
+    post:
+      description: Update user Address
+      security: []
+      parameters:
+        - name: user_login_request
+          in: body
+          description: The phone number to send otp
+          required: true
+          schema:
+            $ref: "#/definitions/login_request"
+      responses:
+        200:
+          description: Returns sending OTP is success or not
+          schema:
+            $ref: "#/definitions/login_response"
+      tags:
+        - Users
 
-  /nurse/otp/verify:
+  /user/otp/verify:
     post:
       description: Verify OTP sent to Mobile
       security: []
@@ -2221,450 +2072,331 @@ paths:
           schema:
             $ref: "#/definitions/otp_verify_response"
       tags:
-        - Nurses
-  /nurse/details/update:
+        - Users
+
+  /user/welcome:
     post:
-      description: Update Nurse Details
-      parameters:
-        - name: nurse_details_update_request
-          in: body
-          description: Send Nurse Details to update
-          required: true
-          schema:
-            $ref: "#/definitions/nurse_details_update_request"
+      description: Authenticate user with token and sends welcome message
       responses:
         200:
-          description: Returns Update details is success or not
-          schema:
-            $ref: "#/definitions/default_response"
-      tags:
-        - Nurses
-  /nurse/address/update:
-    post:
-      description: Update Nurse Address
-      parameters:
-        - name: nurse_address_update_request
-          in: body
-          description: Update Nurse Address
-          required: true
-          schema:
-            $ref: "#/definitions/nurse_address_update_request"
-      responses:
-        200:
-          description: Returns update Nurse Address is success or not
-          schema:
-            $ref: "#/definitions/default_response"
-      tags:
-        - Nurses
-  /nurse/login:
-    post:
-      description: Authenticate nurse with phone and password
-      security: []
-      parameters:
-        - name: nurse_login_request
-          in: body
-          description: The phone number to login
-          required: true
-          schema:
-            $ref: "#/definitions/nurse_login_request"
-      responses:
-        200:
-          description: Returns authentication is success or not
-          schema:
-            $ref: "#/definitions/login_response"
-      tags:
-        - Nurses
-  /nurse/welcome:
-    post:
-      description: Authenticate nurse with token and sends welcome message
-      responses:
-        200:
-          description: Authenticates nurse and sends nurse details
+          description: Authenticates user and sends user details
           schema:
             $ref: "#/definitions/auth_response"
       tags:
-        - Nurses
-  /nurse/details:
+        - Users
+  /user/address/list:
     post:
-      description: List Nurse Details
+      description: List User Addresses
       parameters:
-        - name: nurse phone
+        - name: user id
           in: body
-          description: Send nurse phone
+          description: Send user id
           required: true
           schema:
-            $ref: "#/definitions/otp_request"
+            $ref: "#/definitions/user_info"
       responses:
         200:
-          description: Returns Nurse details
+          description: Returns user addresses
           schema:
-            $ref: "#/definitions/nurse_details_response"
+            $ref: "#/definitions/user_address_response"
       tags:
-        - Nurses
-  /nurse/address/list:
+        - Users
+  /user/appointment/request/cancel:
     post:
-      description: List Nurse Addresses
-      parameters:
-        - name: nurse id
-          in: body
-          description: Send nurse id
-          required: true
-          schema:
-            $ref: "#/definitions/nurse_info"
-      responses:
-        200:
-          description: Returns nurse addresses
-          schema:
-            $ref: "#/definitions/nurse_address_response"
-      tags:
-        - Nurses
-  /nurse/appointment/requests:
-    post:
-      description: List Appointment Requests
-      parameters:
-        - name: nurse_info_with_location
-          in: body
-          description: Send Nurse Id & Geo Location
-          required: true
-          schema:
-            $ref: "#/definitions/nurse_info_with_location"
-      responses:
-        200:
-          description: Returns Appointment Requests associated with the Nurse Id
-          schema:
-            $ref: "#/definitions/appointment_request_list_response"
-      tags:
-        - Nurses
-
-  /nurse/appointment/request/accept:
-    post:
-      description: Accept Appointment Request
+      description: Cancel Appointment Request
       parameters:
         - name: appointment_request
           in: body
-          description: Appointment Reequest to accept
+          description: Appointment Reequest to cancel
           required: true
           schema:
             $ref: "#/definitions/appointment_request"
       responses:
         200:
-          description: Returns Appointment Request Accept Operation is success or not
+          description: Returns Appointment Request Cancel Operation is success or not
           schema:
             $ref: "#/definitions/default_response"
       tags:
-        - Nurses
-  /nurse/appointment/request/info:
+        - Users
+  /user/appointment/requests:
+    post:
+      description: List Appointment Requests
+      parameters:
+        - name: user_id
+          in: body
+          description: User Id to List all the Appointment Requests
+          required: true
+          schema:
+            properties:
+              user_id: 
+                type: string
+                example: 4294ebd4-3498-4a23-bd89-87c126483cf9
+      responses:
+        200:
+          description: Returns Appointment Request List for a User
+          schema:
+            $ref: "#/definitions/appointment_request_list_response"
+      tags:
+        - Users
+  /user/appointment/request/info:
     post:
       description: Appointment Request Info
       parameters:
-        - name: appointment_request
+        - name: appointment_request_info
           in: body
-          description: Appointment Reequest Info
+          description: appointment request info
           required: true
           schema:
-            $ref: "#/definitions/appointment_request"
+            properties:
+              user_id: 
+                type: string
+                example: 4294ebd4-3498-4a23-bd89-87c126483cf9
+              appointment_request_id: 
+                type: integer
+                example: 28
+              user_geolocation:
+                type: string
+                example: 0101000020E6100000F9765C9E180D5440590927B38B3F2A40
       responses:
         200:
           description: Returns Appointment Request Info
           schema:
-            $ref: "#/definitions/nurse_appointment_info_response"
+            $ref: "#/definitions/appointment_request_info_response"
       tags:
-        - Nurses
-  /nurse/appointment/request/reject:
+        - Users
+
+  /user/reviews:
     post:
-      description: Reject Appointment Request
-      parameters:
-        - name: appointment_request
-          in: body
-          description: Appointment Reequest to reject
-          required: true
-          schema:
-            $ref: "#/definitions/appointment_request"
-      responses:
-        200:
-          description: Returns Appointment Request Reject Operation is success or not
-          schema:
-            $ref: "#/definitions/default_response"
-      tags:
-        - Nurses
-  /nurse/appointment/start:
-    post:
-      description: Mark Appointment as Started
-      parameters:
-        - name: session_start_request
-          in: body
-          description: OTP to start session
-          required: true
-          schema:
-            $ref: "#/definitions/session_start_request"
-      responses:
-        200:
-          description: Returns Appointment Start Operation is success or not
-          schema:
-            $ref: "#/definitions/default_response"
-      tags:
-        - Nurses
-  /nurse/appointment/end:
-    post:
-      description: Mark Appointment as Completed
-      parameters:
-        - name: session_end_request
-          in: body
-          description: Appointment Id to complete
-          required: true
-          schema:
-            $ref: "#/definitions/session_end_request"
-      responses:
-        200:
-          description: Returns Appointment Complete Operation is success or not
-          schema:
-            $ref: "#/definitions/default_response"
-      tags:
-        - Nurses
-  /nurse/appointments/completed:
-    post:
-      description: Get completed appointments for a Nurse
-      parameters:
-        - name: nurse_info
-          in: body
-          description: Nurse Id
-          required: true
-          schema:
-            $ref: "#/definitions/nurse_info"
-      responses:
-        200:
-          description: Returns completed appointments for a Nurse
-          schema:
-            $ref: "#/definitions/nurse_appointments_completed_response"
-      tags:
-        - Nurses
-  /nurse/appointments/ongoing:
-    post:
-      description: Get ongoing appointments for a Nurse
-      parameters:
-        - name: nurse_info
-          in: body
-          description: Nurse Id
-          required: true
-          schema:
-            $ref: "#/definitions/nurse_info"
-      responses:
-        200:
-          description: Returns ongoing appointments for a Nurse
-          schema:
-            $ref: "#/definitions/nurse_appointments_ongoing_response"
-      tags:
-        - Nurses
-  /nurse/appointments/upcoming:
-    post:
-      description: Get upcoming appointments for a Nurse
-      parameters:
-        - name: nurse_info
-          in: body
-          description: Nurse Id
-          required: true
-          schema:
-            $ref: "#/definitions/nurse_info"
-      responses:
-        200:
-          description: Returns upcoming appointments for a Nurse
-          schema:
-            $ref: "#/definitions/nurse_appointments_ongoing_response"
-      tags:
-        - Nurses
-  /nurse/available/slots:
-    post:
-      description: Get available slots for a Nurse
-      parameters:
-        - name: nurse_info
-          in: body
-          description: Nurse Id
-          required: true
-          schema:
-            $ref: "#/definitions/nurse_info"
-      responses:
-        200:
-          description: Returns available slots for a Nurse
-          schema:
-            $ref: "#/definitions/nurse_available_slots"
-      tags:
-        - Nurses
-  /nurse/open/slots:
-    post:
-      description: Get open slots for a Nurse
-      parameters:
-        - name: nurse_info
-          in: body
-          description: Nurse Id
-          required: true
-          schema:
-            $ref: "#/definitions/nurse_info"
-      responses:
-        200:
-          description: Returns open slots for a Nurse
-          schema:
-            $ref: "#/definitions/nurse_open_slots"
-      tags:
-        - Nurses
-  /nurse/fees/info:
-    post:
-        description: Get fees for a Nurse
+        description: Returns User Reviews
         parameters:
-          - name: nurse_info
+          - name: user_reviews_request
             in: body
-            description: Nurse Id
+            description: user reviews request
             required: true
             schema:
-              $ref: "#/definitions/nurse_info"
+              $ref: "#/definitions/user_review_summary_request"
         responses:
           200:
-            description: Returns fees for a Nurse
+            description: Returns User Reviews
             schema:
-              $ref: "#/definitions/nurse_fees_response"
+              $ref: "#/definitions/user_review_summary_response"
         tags:
-          - Nurses
-  /nurse/fees/save:
-    post:
-        description: Update fees for a Nurse
+          - Users
+
+  /user/review/add/:
+      post:
+        description: Add Review for a User
         parameters:
-          - name: nurse_fees_info
+          - name: user_review_add_request
             in: body
-            description: nurse fees info
+            description: Add Review for a User
             required: true
             schema:
-              $ref: "#/definitions/nurse_fees_info"
+              $ref: "#/definitions/user_review_add_request"
         responses:
           200:
-            description: Updates fees for a Nurse
+            description: Returns Add Review Response
             schema:
               $ref: "#/definitions/default_response"
         tags:
-          - Nurses
-  /nurse/search/list:
-    post:
-        description: Search for a Nurse
-        parameters:
-          - name: nurse_filter_request
-            in: body
-            description: nurse filter request
-            required: true
-            schema:
-              $ref: "#/definitions/nurse_filter_request"
-        responses:
-          200:
-            description: Returns Nurses matching the filter criteria
-            schema:
-              $ref: "#/definitions/nurse_search_response"
-        tags:
-          - Nurses
-  /nurse/profile:
-    post:
-        description: Returns Nurse profile
-        parameters:
-          - name: nurse_profile_request
-            in: body
-            description: nurse profile request
-            required: true
-            schema:
-              $ref: "#/definitions/nurse_profile_request"
-        responses:
-          200:
-            description: Returns Nurse Profile
-            schema:
-              $ref: "#/definitions/nurse_profile_response"
-        tags:
-          - Nurses
+          - Users
   
-  /nurse/appointment/request/book/singlevisit:
+  /user/appointments/completed:
     post:
-        description: Send Single Visit Appointment Request to Nurses
-        parameters:
-          - name: nurse_appointment_request
-            in: body
-            description: nurse appointment request
-            required: true
-            schema:
-              $ref: "#/definitions/apointment_request_singlevisit"
-        responses:
-          200:
-            description: Returns Appointment Request is Success or not
-            schema:
-              $ref: "#/definitions/nurse_booking_result"
-        tags:
-          - Nurses
-    
-  /nurse/appointment/request/book/liveincare:
+      description: Get completed appointments for a User
+      parameters:
+        - name: user_info
+          in: body
+          description: User Id
+          required: true
+          schema:
+            $ref: "#/definitions/user_info"
+      responses:
+        200:
+          description: Returns completed appointments for a User
+          schema:
+            $ref: "#/definitions/user_appointments_completed_response"
+      tags:
+        - Users
+  /user/appointments/ongoing:
     post:
-        description: Send Live In Care Appointment Request to Nurses
-        parameters:
-          - name: nurse_appointment_request
-            in: body
-            description: nurse appointment request
-            required: true
-            schema:
-              $ref: "#/definitions/apointment_request_liveincare"
-        responses:
-          200:
-            description: Returns Appointment Request is Success or not
-            schema:
-              $ref: "#/definitions/nurse_booking_result"
-        tags:
-          - Nurses
-  
-  /nurse/appointment/request/book/recurringvisit:
+      description: Get ongoing appointments for a User
+      parameters:
+        - name: user_info
+          in: body
+          description: User Id
+          required: true
+          schema:
+            $ref: "#/definitions/user_info"
+      responses:
+        200:
+          description: Returns ongoing appointments for a User
+          schema:
+            $ref: "#/definitions/user_appointments_ongoing_response"
+      tags:
+        - Users
+  /user/appointments/upcoming:
     post:
-        description: Send Recurring Visit Appointment Request to Nurses
-        parameters:
-          - name: nurse_appointment_request
-            in: body
-            description: nurse appointment request
-            required: true
-            schema:
-              $ref: "#/definitions/apointment_request_recurringvisit"
-        responses:
-          200:
-            description: Returns Appointment Request is Success or not
-            schema:
-              $ref: "#/definitions/nurse_booking_result"
-        tags:
-          - Nurses
-  
-  /nurse/myearnings:
-    post:
-        description: Returns Nurse Earnings
-        parameters:
-          - name: nurse_earning_request
-            in: body
-            description: nurse earning request
-            required: true
-            schema:
-              $ref: "#/definitions/nurse_my_earning_request"
-        responses:
-          200:
-            description: Returns Appointment Request is Success or not
-            schema:
-              $ref: "#/definitions/nurse_myearning_response"
-        tags:
-          - Nurses
+      description: Get upcoming appointments for a User
+      parameters:
+        - name: user_info
+          in: body
+          description: User Id
+          required: true
+          schema:
+            $ref: "#/definitions/user_info"
+      responses:
+        200:
+          description: Returns upcoming appointments for a User
+          schema:
+            $ref: "#/definitions/user_appointments_ongoing_response"
+      tags:
+        - Users
 
-  /nurse/reviews:
+  /user/settings/info:
     post:
-        description: Returns Nurse Reviews
+        description: Get settings for a User
         parameters:
-          - name: nurse_reviews_request
+          - name: user_info
             in: body
-            description: nurse reviews request
+            description: User Id
             required: true
             schema:
-              $ref: "#/definitions/nurse_review_summary_request"
+              $ref: "#/definitions/user_info"
         responses:
           200:
-            description: Returns Nurse Reviews
+            description: Returns settings for a User
             schema:
-              $ref: "#/definitions/nurse_review_summary_response"
+              $ref: "#/definitions/user_settings_response"
         tags:
-          - Nurses
-  /nurse/appoinment/sessions:
+          - Users
+  /user/settings/save:
+    post:
+        description: Update settings for a User
+        parameters:
+          - name: user_settings_info
+            in: body
+            description: user settings info
+            required: true
+            schema:
+              $ref: "#/definitions/user_settings_info"
+        responses:
+          200:
+            description: Updates settings for a User
+            schema:
+              $ref: "#/definitions/default_response"
+        tags:
+          - Users
+  
+  /user/favourites/add:
+    post:
+        description: Adds favourites for a User
+        parameters:
+          - name: user_favourites_add_request
+            in: body
+            description: user favourites add request
+            required: true
+            schema:
+              $ref: "#/definitions/user_favourites_add_request"
+        responses:
+          200:
+            description: Adds favourites for a User
+            schema:
+              $ref: "#/definitions/default_response"
+        tags:
+          - Users
+  
+  /user/favourites/remove:
+    post:
+        description: Removes favourites for a User
+        parameters:
+          - name: user_favourites_id
+            in: body
+            description: user favourites id
+            required: true
+            schema:
+              properties:
+                user_favourites_id: 
+                  type: integer
+                  example: 2
+        responses:
+          200:
+            description: Removes favourites for a User
+            schema:
+              $ref: "#/definitions/default_response"
+        tags:
+          - Users
+  
+  /user/favourites:
+    post:
+        description: Returns favourites for a User
+        parameters:
+          - name: user_favourites_info
+            in: body
+            description: user favourites info
+            required: true
+            schema:
+              $ref: "#/definitions/user_favourites_info"
+        responses:
+          200:
+            description: Returns favourites for a User
+            schema:
+              $ref: "#/definitions/user_favourites_response"
+        tags:
+          - Users
+  
+  /user/notifications:
+    post:
+      description: Returns notifications for a User
+      parameters:
+        - name: user_info
+          in: body
+          description: user info
+          required: true
+          schema:
+            $ref: "#/definitions/user_info"
+      responses:
+        200:
+          description: Returns notifications for a User
+          schema:
+            $ref: "#/definitions/user_notifications_response"
+      tags:
+        - Users
+  /user/notifications/clearall:
+    post:
+      description: Clears notifications for a User
+      parameters:
+        - name: user_info
+          in: body
+          description: user info
+          required: true
+          schema:
+            $ref: "#/definitions/user_info"
+      responses:
+        200:
+          description: Clears notifications for a User
+          schema:
+            $ref: "#/definitions/default_response"
+      tags:
+        - Users
+  /user/notifications/add:
+    post:
+      description: Add notification for a User
+      parameters:
+        - name: user_notification_id
+          in: body
+          description: user notification info
+          required: true
+          schema:
+            $ref: "#/definitions/user_notification_info"
+      responses:
+        200:
+          description: Add notification for a User
+          schema:
+            $ref: "#/definitions/default_response"
+      tags:
+        - Users
+  /user/appointment/sessions:
     post:
       description: Appointment Session List
       parameters:
@@ -2678,10 +2410,10 @@ paths:
         200:
           description: Returns Appointment Session List
           schema:
-            $ref: "#/definitions/nurse_appointment_session_list_response"
+            $ref: "#/definitions/user_appointment_session_list_response"
       tags:
-        - Nurses
-  /nurse/appointment/sessions/current:
+        - Users
+  /user/appointment/sessions/current:
     post:
       description: Appointment Session List
       parameters:
@@ -2690,32 +2422,15 @@ paths:
           description: Appointment Session List Request
           required: true
           schema:
-            $ref: "#/definitions/nurse_info"
+            $ref: "#/definitions/user_info"
       responses:
         200:
           description: Returns Appointment Session List
           schema:
-            $ref: "#/definitions/nurse_appointment_current_session_list_response"
+            $ref: "#/definitions/user_appointment_current_session_list_response"
       tags:
-        - Nurses
-  /nurse/appointment/sessions/upcoming/count:
-    post:
-      description: Returns upcoming appointment session count for a Nurse
-      parameters:
-        - name: nurse_info
-          in: body
-          description: nurse info
-          required: true
-          schema:
-            $ref: "#/definitions/nurse_info"
-      responses:
-        200:
-          description: Returns upcoming appointment session count for a Nurse
-          schema:
-            $ref: "#/definitions/nurse_upcoming_session_count_response"
-      tags:
-        - Nurses
-  /nurse/appointment/session/info:
+        - Users
+  /user/appointment/session/info:
     post:
       description: Appointment Session Info
       parameters:
@@ -2729,267 +2444,146 @@ paths:
         200:
           description: Returns Appointment Request Info
           schema:
-            $ref: "#/definitions/nurse_appointment_session_info_response"
+            $ref: "#/definitions/user_appointment_session_info_response"
       tags:
-        - Nurses
-  /nurse/appointment/start/sendotp:
+        - Users
+  /user/appointment/sessions/upcoming/count:
     post:
-      description: Get OTP to start the Appointment Session
+      description: Returns upcoming appointment session count for a User
       parameters:
-        - name: session_start_otp_request
+        - name: user_info
           in: body
-          description: Appointment Session Request
+          description: user info
           required: true
           schema:
-            $ref: "#/definitions/session_start_otp_request"
+            $ref: "#/definitions/user_info"
       responses:
         200:
-          description: Returns Appointment Session Start OTP
+          description: Returns upcoming appointment session count for a User
           schema:
-            $ref: "#/definitions/nurse_session_start_otp_response"
+            $ref: "#/definitions/user_upcoming_session_count_response"
       tags:
-        - Nurses
-  /nurse/appointment/end/sendotp:
+        - Users
+  /user/notifications/count:
     post:
-      description: Get OTP to end the Appointment Session
+      description: Returns unread notification count for a User
       parameters:
-        - name: session_end_otp_request
+        - name: user_info
           in: body
-          description: Appointment Session Request
+          description: user info
           required: true
           schema:
-            $ref: "#/definitions/session_end_otp_request"
+            $ref: "#/definitions/user_info"
       responses:
         200:
-          description: Returns Appointment Session to End OTP
+          description: Returns unread notification count for a User
           schema:
-            $ref: "#/definitions/nurse_session_end_otp_response"
+            $ref: "#/definitions/user_notification_count_response"
       tags:
-        - Nurses
-  /nurse/review/add:
+        - Users
+  /user/notifications/read:
     post:
-      description: Add Review for a Nurse
+      description: Marks a notification as read for a User
       parameters:
-        - name: nurse_review_add_request
-          in: body
-          description: Add Review for a Nurse
-          required: true
-          schema:
-            $ref: "#/definitions/nurse_review_add_request"
-      responses:
-        200:
-          description: Returns Add Review Response
-          schema:
-            $ref: "#/definitions/default_response"
-      tags:
-        - Nurses
-
-  /nurse/settings/info:
-    post:
-        description: Get settings for a Nurse
-        parameters:
-          - name: nurse_info
-            in: body
-            description: Nurse Id
-            required: true
-            schema:
-              $ref: "#/definitions/nurse_info"
-        responses:
-          200:
-            description: Returns settings for a Nurse
-            schema:
-              $ref: "#/definitions/nurse_settings_response"
-        tags:
-          - Nurses
-  /nurse/settings/save:
-    post:
-        description: Update settings for a Nurse
-        parameters:
-          - name: nurse_settings_info
-            in: body
-            description: nurse settings info
-            required: true
-            schema:
-              $ref: "#/definitions/nurse_settings_info"
-        responses:
-          200:
-            description: Updates settings for a Nurse
-            schema:
-              $ref: "#/definitions/default_response"
-        tags:
-          - Nurses
-
-  /nurse/notifications:
-    post:
-      description: Returns notifications for a Nurse
-      parameters:
-        - name: nurse_info
-          in: body
-          description: nurse info
-          required: true
-          schema:
-            $ref: "#/definitions/nurse_info"
-      responses:
-        200:
-          description: Returns notifications for a Nurse
-          schema:
-            $ref: "#/definitions/nurse_notifications_response"
-      tags:
-        - Nurses
-  /nurse/notifications/clearall:
-    post:
-      description: Clears notifications for a Nurse
-      parameters:
-        - name: nurse_info
-          in: body
-          description: nurse info
-          required: true
-          schema:
-            $ref: "#/definitions/nurse_info"
-      responses:
-        200:
-          description: Clears notifications for a Nurse
-          schema:
-            $ref: "#/definitions/default_response"
-      tags:
-        - Nurses
-  /nurse/notifications/add:
-    post:
-      description: Add notification for a Nurse
-      parameters:
-        - name: nurse_notification_info
-          in: body
-          description: nurse notification info
-          required: true
-          schema:
-            $ref: "#/definitions/nurse_notification_info"
-      responses:
-        200:
-          description: Add notification for a Nurse
-          schema:
-            $ref: "#/definitions/default_response"
-      tags:
-        - Nurses
-  /nurse/notifications/count:
-    post:
-      description: Returns unread notification count for a Nurse
-      parameters:
-        - name: nurse_info
-          in: body
-          description: nurse info
-          required: true
-          schema:
-            $ref: "#/definitions/nurse_info"
-      responses:
-        200:
-          description: Returns unread notification count for a Nurse
-          schema:
-            $ref: "#/definitions/nurse_notification_count_response"
-      tags:
-        - Nurses
-  /nurse/notifications/read:
-    post:
-      description: Marks a notification as read for a Nurse
-      parameters:
-        - name: notification_info
+        - name: user_info
           in: body
           description: notification info
           required: true
           schema:
-            $ref: "#/definitions/nurse_notifications_id"
+            $ref: "#/definitions/user_notifications_id"
       responses:
         200:
-          description: Marks a notification as read for a Nurse
+          description: Marks a notification as read for a User
           schema:
             $ref: "#/definitions/default_response"
       tags:
-        - Nurses
-  /nurse/notifications/read/all:
+        - Users
+  /user/notifications/read/all:
     post:
-      description: Marks a notification as read for a Nurse
+      description: Marks notifications as read for a User
       parameters:
-        - name: nurse_info
+        - name: user_info
           in: body
-          description: nurse info
+          description: user info
           required: true
           schema:
-            $ref: "#/definitions/nurse_info"
+            $ref: "#/definitions/user_info"
       responses:
         200:
-          description: Marks a notification as read for a Nurse
+          description: Marks notifications as read for a User
           schema:
             $ref: "#/definitions/default_response"
       tags:
-        - Nurses
-  /nurse/complaints/add:
+        - Users
+  /user/complaints/add:
     post:
-      description: Add complaints by Nurse
+      description: Add complaints by User
       parameters:
-        - name: nurse_complaint_info
+        - name: user_complaint_info
           in: body
-          description: nurse complaint info
+          description: user complaint info
           required: true
           schema:
-            $ref: "#/definitions/nurse_complaint_info"
+            $ref: "#/definitions/user_complaint_info"
       responses:
         200:
-          description: Add complaints by Nurse
+          description: Add complaints by User
           schema:
             $ref: "#/definitions/default_response"
       tags:
-        - Nurses
-  /nurse/complaints:
+        - Users
+  /user/complaints:
     post:
-      description: Returns complaints raised by Nurse
+      description: Returns complaints raised by User
       parameters:
-        - name: nurse_info
+        - name: user_info
           in: body
-          description: nurse info
+          description: user info
           required: true
           schema:
-            $ref: "#/definitions/nurse_info"
+            $ref: "#/definitions/user_info"
       responses:
         200:
-          description: Returns complaints raised by Nurse
+          description: Returns complaints raised by User
           schema:
-            $ref: "#/definitions/nurse_complaints_response"
+            $ref: "#/definitions/user_complaints_response"
       tags:
-        - Nurses
-  /nurse/reports:
+        - Users
+  /user/appointment/session/cancel:
     post:
-      description: Returns Summary Reports for Nurse
+      description: appointment cancel request
       parameters:
-        - name: nurse_report_summary_request
+        - name: user_appointment_cancel_request
           in: body
-          description: nurse report summary request
+          description: user appointment cancel request
           required: true
           schema:
-            $ref: "#/definitions/nurse_report_summary_request"
+            $ref: "#/definitions/user_appointment_cancel_request"
       responses:
         200:
-          description: Returns Summary Reports for Nurse
+          description: appointment cancel request by user
           schema:
-            $ref: "#/definitions/nurse_summary_report_response"
+            $ref: "#/definitions/default_response"
       tags:
-        - Nurses
-  /nurse/profile/image:
+        - Users
+  /user/profile/image:
     post:
-      description: Returns Profile Image URL for Nurse
+      description: Returns Profile Image URL for User
       parameters:
-        - name: nurse_list_request
+        - name: user_info
           in: body
-          description: nurse profile image url request
+          description: user profile image url request
           required: true
           schema:
-            $ref: "#/definitions/nurse_list_request"
+            $ref: "#/definitions/user_info"
       responses:
         200:
-          description: Returns Profile Image URL for Nurse
+          description: Returns Profile Image URL for User
           schema:
-            $ref: "#/definitions/nurse_profile_image_response"
+            $ref: "#/definitions/profile_image_response"
       tags:
-        - Nurses
-  /nurse/profile/image/upload:
+        - Users
+  /user/profile/image/upload:
     post:
       summary: Uploads a file.
       consumes:
@@ -3008,31 +2602,112 @@ paths:
           required: true
           description: The file name to upload.
         - in: formData
-          name: nurse_id
+          name: user_id
           type: string
           required: true
-          description: nurse id
+          description: user id
       responses:
         200:
           description: Returns File Upload is success or not
           schema:
             $ref: "#/definitions/default_response"
       tags:
-        - Nurses
-  /nurse/account/remove:
+        - Users
+  /user/patient/profile/image:
     post:
-      description: remove nurse account
+      description: Returns Profile Image URL for Patient
       parameters:
-        - name: nurse_info
+        - name: patient_list_request
           in: body
-          description: remove nurse account
+          description: patient profile image url request
           required: true
           schema:
-            $ref: "#/definitions/nurse_info"
+            $ref: "#/definitions/patient_list_request"
       responses:
         200:
-          description: remove nurse account
+          description: Returns Profile Image URL for Patient
+          schema:
+            $ref: "#/definitions/patient_profile_image_response"
+      tags:
+        - Patients
+  /user/patient/profile/image/upload:
+    post:
+      summary: Uploads a file.
+      consumes:
+        - multipart/form-data
+      produces:
+        - application/json
+      parameters:
+        - in: formData
+          name: file
+          type: file
+          required: true
+          description: The file to upload.
+        - in: formData
+          name: fileName
+          type: string
+          required: true
+          description: The file name to upload.
+        - in: formData
+          name: patient_id
+          type: string
+          required: true
+          description: patient id
+      responses:
+        200:
+          description: Returns File Upload is success or not
           schema:
             $ref: "#/definitions/default_response"
       tags:
-        - Nurses
+        - Patients
+  /user/account/remove:
+    post:
+      description: remove user account
+      parameters:
+        - name: user_info
+          in: body
+          description: remove user account
+          required: true
+          schema:
+            $ref: "#/definitions/user_info"
+      responses:
+        200:
+          description: remove user account
+          schema:
+            $ref: "#/definitions/default_response"
+      tags:
+        - Users
+  /user/payment/confirm:
+    post:
+      description: confirm and pay
+      parameters:
+        - name: payment_info
+          in: body
+          description: confirm and pay
+          required: true
+          schema:
+            $ref: "#/definitions/payment_info"
+      responses:
+        200:
+          description: confirm and pay
+          schema:
+            $ref: "#/definitions/default_response"
+      tags:
+        - Users
+  /user/transaction/history:
+    post:
+        description: Returns User Transaction History
+        parameters:
+          - name: user_transaction_request
+            in: body
+            description: user transaction request
+            required: true
+            schema:
+              $ref: "#/definitions/user_transaction_request"
+        responses:
+          200:
+            description: Returns User Transaction History
+            schema:
+              $ref: "#/definitions/user_transaction_response"
+        tags:
+          - Users
